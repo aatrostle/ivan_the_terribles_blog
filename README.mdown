@@ -1,9 +1,26 @@
-# My New Blog!
+## Ivan The Less Terrible's Blog
 
-I've got a lot to say, and now I have a place to say it!!!!!
+First thing I did to make things a bit faster is implement pagination for posts.
 
-Read all my amazing posts!!!!! You can load them into the app with: `rake load_blog:load_shit`
+Then moved comments to the post show action and added pagination to those as well.
 
-Since I know you want to read them all, I designed my page to show EVERYTHING on the front page of the site!!!!!
+Next I added page caching and a sweeper to clear the cache on create, update, and delete actions.
 
-I know it is a little slow (but totes worth it!!!!)... _Do you know how I can make it faster?_
+With all this in place below are my before and after rack-mini-profiler stats
+
+#### Before optimization
+
+![before optimization](https://www.evernote.com/shard/s81/sh/1e9041b4-7c63-4478-8627-c892f06c609e/7147e198d9b392efa0536716379ad356/deep/0/Screenshot%206/18/13%201:17%20AM.png)
+
+#### After optimization
+
+![after optimization](https://www.evernote.com/shard/s81/sh/312d57eb-e5e2-49d2-aba1-616e5b0b12a8/7bc4d0f93996e258412253f532151c80/deep/0/Screenshot%206/18/13%201:17%20AM.png)
+
+Finally I pushed all of this up to heroku. I ran into Heroku's postgresql hard limit so after seeing [Jeffrey Horn](https://github.com/theverything) mention modifying the rake task that populates the database, I did the same thing.
+
+Now since its late. I am going to bed.
+
+### To Do!
+
+* Add some more styling (going to get up early hopefully)
+* Add rack-mini-profiler to production maybe? To see times on the server.
