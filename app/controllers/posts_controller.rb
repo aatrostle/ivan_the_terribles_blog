@@ -1,4 +1,8 @@
 class PostsController < ApplicationController
+  caches_page :index, :show
+  before_filter(only: [:index, :show]) { @page_caching = true }
+  cache_sweeper :post_sweeper
+
   # GET /posts
   # GET /posts.json
   def index
