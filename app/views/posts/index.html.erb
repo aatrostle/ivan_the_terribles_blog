@@ -1,5 +1,9 @@
 <h1>Ivan the Terrible's Blog</h1>
 
+<p>
+  <%= link_to 'New Post', new_post_path %>
+</p>
+
 <section class="blog">
 <% @posts.each do |post| %>
   <section class="post">
@@ -10,16 +14,6 @@
       <%= link_to 'Edit', edit_post_path(post) %> |
       <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
     </div>
-    <!-- <div class="comment">
-      <% post.comments.each do |c| %>
-        <p><%= c.body %></p>
-        <div class="reply">
-          <% c.replies.each do |r| %>
-            <p><%= r.body %></p>
-          <% end %>
-        </div>
-      <% end %>
-    </div> -->
   </section>
   <% end %>
 </section>
@@ -27,7 +21,3 @@
 <br />
 
 <%= will_paginate @posts %>
-
-<br />
-
-<%= link_to 'New Post', new_post_path %>

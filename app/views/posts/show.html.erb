@@ -10,6 +10,26 @@
   <%= @post.body %>
 </p>
 
+<p>
+  <%= link_to 'Edit', edit_post_path(@post) %> |
+  <%= link_to 'Back', posts_path %>
+</p>
 
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+<p>
+  <b>Comments:</b>
+  <ul class="comment">
+    <% @comments.each do |c| %>
+      <li>
+        <%= c.id %> | <%= c.body %>
+        <ul class="reply">
+          <% c.replies.each do |r| %>
+            <li><%= r.body %></li>
+          <% end %>
+        </ul>
+      </li>
+    <% end %>
+  </ul>
+
+  <%= will_paginate @comments %>
+
+</p>
